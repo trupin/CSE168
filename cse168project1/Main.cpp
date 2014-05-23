@@ -21,9 +21,16 @@ void project3();
 ////////////////////////////////////////////////////////////////////////////////
 
 int main(int argc,char **argv) {
+    
+    
+    Scene scn;
+    
+    scn.Load("./dragon.ply");
+        
+    
 //	project1();
-    project2();
-//    project3();
+//  project2();
+//  project3();
 	return 0;
 }
 
@@ -33,14 +40,20 @@ void project1() {
 	// Create scene
 	Scene scn;
 	scn.SetSkyColor(Color(0.8f, 0.9f, 1.0f));
-    
+
 	// Create boxes
+    LambertMaterial lambert1;
+    lambert1.SetDiffuseColor(Color(0.3f,0.3f,0.3f));
+
 	MeshObject box1;
-	box1.MakeBox(5.0f,0.1f,5.0f);
+	box1.MakeBox(5.0f,0.1f,5.0f, &lambert1);
 	scn.AddObject(box1);
     
+    
+    LambertMaterial lambert2;
+    lambert2.SetDiffuseColor(Color(0.7f,0.7f,0.7f));
 	MeshObject box2;
-	box2.MakeBox(1.0f,1.0f,1.0f);
+	box2.MakeBox(1.0f,1.0f,1.0f, &lambert2);
     
 	InstanceObject inst1(box2);
 	Matrix34 mtx;
@@ -191,7 +204,7 @@ void project3() {
     mtl[3].SetDiffuseColor(Color(1.0f,0.1f,0.1f));
     mtl[3].SetDiffuseLevel(0.8f);
     mtl[3].SetSpecularLevel(0.2f);
-    mtl[2].SetSpecularColor(Color(1.0f,1.0f,1.0f));
+    mtl[3].SetSpecularColor(Color(1.0f,1.0f,1.0f));
     mtl[3].SetRoughness(1000.0f,1000.0f);
     
     // Load dragon mesh
@@ -202,6 +215,14 @@ void project3() {
     BoxTreeObject tree;
     tree.Construct(dragon);
     
+    // Create ground
+    LambertMaterial lambert;
+    lambert.SetDiffuseColor(Color(0.3f,0.3f,0.35f));
+    MeshObject ground;
+    ground.MakeBox(2.0f,0.11f,2.0f,&lambert);
+    scn.AddObject(ground);
+
+    
     // Create dragon instances
     Matrix34 mtx;
     for(int i=0;i<nummtls;i++) {
@@ -211,13 +232,6 @@ void project3() {
         inst->SetMaterial(&mtl[i]);
         scn.AddObject(*inst);
     }
-    
-    // Create ground
-    LambertMaterial lambert;
-    lambert.SetDiffuseColor(Color(0.3f,0.3f,0.35f));
-    MeshObject ground;
-    ground.MakeBox(2.0f,0.11f,2.0f,&lambert);
-    scn.AddObject(ground);
     
     // Create lights
     DirectLight sunlgt;
@@ -232,7 +246,7 @@ void project3() {
     cam.SetFOV(40.0f); 
     cam.SetAspect(1.33f); 
     cam.SetResolution(800,600); 
-    cam.SetSuperSample(10); 
+    cam.SetSuperSample(100);
     
     // Render image 
     cam.Render(scn); 

@@ -44,7 +44,7 @@ void AABBNode::_construct(Triangle **triangles, int num, int deep) {
     
     dist = _max - _min;
 
-    if (num > 40 && deep < 18) {
+    if (num > 10) {
         int mid = num / 2;
 
         std::vector<Triangle *> t(num);
@@ -57,7 +57,7 @@ void AABBNode::_construct(Triangle **triangles, int num, int deep) {
         else if (dist.y > dist.x && dist.y > dist.z)
             std::nth_element(t.begin(), t.begin() + mid, t.end(), Triangle::compareY);
         else
-            std::nth_element(t.begin(), t.begin() + mid, t.end(), Triangle::compareZ);
+            std::nth_element(t.begin(), t.begin() + mid , t.end(), Triangle::compareZ);
 
         for (int i = 0; i < num; ++i)
             triangles[i] = t[i];
@@ -92,7 +92,7 @@ bool AABBNode::Intersect(const Ray &ray, Intersection &hit) {
             if (_triangles[i]->Intersect(ray, hit))
                 hashit = true;
         }
-        
+
         return hashit;
     }
 
@@ -102,6 +102,12 @@ bool AABBNode::Intersect(const Ray &ray, Intersection &hit) {
     res[1] = _children[1]._intersectBB(ray, hits[1]);
 
     bool result = false;
+    if (res[0] && res[1]) {
+        if (hits[0] < hits[1])
+            return _children[0].Intersect(ray, hit) || _children[1].Intersect(ray, hit);
+        else
+            return _children[1].Intersect(ray, hit) || _children[0].Intersect(ray, hit);
+    }
     if (res[0] && _children[0].Intersect(ray, hit))
         result = true;
     if (res[1] && _children[1].Intersect(ray, hit))
@@ -113,7 +119,7 @@ bool AABBNode::Intersect(const Ray &ray, Intersection &hit) {
 bool AABBNode::_intersectBB(const Ray &ray, Intersection &hit) const {
     Vector3 t1, t2;
 
-    Vector3 invDir = Vector3(1.f, 1.f, 1.f) / ray.Direction;
+    Vector3 invDir = Vector3(1.0f, 1.0f, 1.0f) / ray.Direction;
     
     t1 = (_min - ray.Origin) * invDir;
     t2 = (_max - ray.Origin) * invDir;
@@ -132,9 +138,9 @@ bool AABBNode::_intersectBB(const Ray &ray, Intersection &hit) const {
     float max = Min(Min(tmax.x, tmax.y), tmax.z);
     
     if (min <= max) {
-        if ((min <= 0.f && max <= 0.f) || min >= MAXFLOAT)
+        if ((min <= 0.0f && max <= 0.0f) || min >= 1e10)
             return false;
-        hit.HitDistance = min < 0.f ? 0.f : min;
+        hit.HitDistance = max; // min < 0.f ? max : min;
         return true;
     }
     return false;

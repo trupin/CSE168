@@ -15,7 +15,7 @@ class Bitmap {
     friend Camera;
     
 public:
-	Bitmap(int x,int y)						{XRes=x; YRes=y; Pixel=new int[XRes*YRes];}
+	Bitmap(int x,int y)						{XRes=x; YRes=y; Pixel=new int[XRes*YRes]{0};}
 	~Bitmap()								{delete []Pixel;}
 
 	bool SaveBMP(const char *filename);

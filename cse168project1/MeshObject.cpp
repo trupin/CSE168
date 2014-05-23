@@ -6,6 +6,9 @@
 #include "LambertMaterial.h"
 #include "Matrix34.h"
 
+#include <assimp/Importer.hpp>
+#include <assimp/postprocess.h>
+
 ////////////////////////////////////////////////////////////////////////////////
 
 MeshObject::MeshObject() {

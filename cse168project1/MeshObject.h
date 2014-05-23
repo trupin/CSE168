@@ -8,6 +8,10 @@
 #include "Object.h"
 #include "Triangle.h"
 
+#include <string>
+
+#include <assimp/scene.h>
+
 class AABBNode;
 
 ////////////////////////////////////////////////////////////////////////////////

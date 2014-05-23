@@ -26,12 +26,10 @@ public:
     void SetFOV(float fov);
     void SetAspect(float aspect);
     void Render(Scene &scn);
+    void RenderPath(Scene &scn, int n = -1);
     void SaveBitmap(const std::string &name);
     void SetSuperSample(int superSample);
 
-private:
-    void _computeLights(Scene &scn, Color &color, Intersection &hit);
-    
 private:
     Matrix34 _worldMatrix;
     float _verticalFOV, _aspect;

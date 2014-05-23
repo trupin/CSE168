@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C7FE12A1904455A00801884 /* AABBNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7FE1281904455A00801884 /* AABBNode.cpp */; };
 		7C7FE12D1904610200801884 /* BoxTreeObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7FE12B1904610200801884 /* BoxTreeObject.cpp */; };
+		7CAB0FB2192D88F40036EADB /* libassimp.3.0.255.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CAB0FB1192D88F40036EADB /* libassimp.3.0.255.dylib */; };
 		7CDC4F9E18F711B10087644D /* cse168project1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7CDC4F9D18F711B10087644D /* cse168project1.1 */; };
 		7CDC4FAA18F712510087644D /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC4FA418F712510087644D /* Vector3.cpp */; };
 		7CDC4FAB18F712510087644D /* MeshObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC4FA518F712510087644D /* MeshObject.cpp */; };
@@ -21,6 +22,7 @@
 		7CDC4FDA18F71B000087644D /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC4FD918F71B000087644D /* PointLight.cpp */; };
 		7CDC4FDC18F71DA90087644D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC4FDB18F71DA90087644D /* Camera.cpp */; };
 		7CDC4FDF18F72C430087644D /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDC4FDE18F72C430087644D /* Triangle.cpp */; };
+		7CDE3F2119198F2200366463 /* RayTrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE3F1F19198F2200366463 /* RayTrace.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,10 +39,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7C19D8A1191D54E10096D3FC /* DielectricMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DielectricMaterial.h; sourceTree = "<group>"; };
 		7C7FE1281904455A00801884 /* AABBNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AABBNode.cpp; sourceTree = "<group>"; };
 		7C7FE1291904455A00801884 /* AABBNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AABBNode.h; sourceTree = "<group>"; };
 		7C7FE12B1904610200801884 /* BoxTreeObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxTreeObject.cpp; sourceTree = "<group>"; };
 		7C7FE12C1904610200801884 /* BoxTreeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxTreeObject.h; sourceTree = "<group>"; };
+		7CAB0FB1192D88F40036EADB /* libassimp.3.0.255.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.0.255.dylib; path = ../../../../usr/local/Cellar/assimp/3.0.1270/lib/libassimp.3.0.255.dylib; sourceTree = "<group>"; };
 		7CDC4F9818F711B10087644D /* cse168project1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cse168project1; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDC4F9D18F711B10087644D /* cse168project1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = cse168project1.1; sourceTree = "<group>"; };
 		7CDC4FA418F712510087644D /* Vector3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		7CDC4FDB18F71DA90087644D /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		7CDC4FDE18F72C430087644D /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		7CDE3F1B191957E900366463 /* AshikhminMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AshikhminMaterial.h; sourceTree = "<group>"; };
+		7CDE3F1F19198F2200366463 /* RayTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RayTrace.cpp; sourceTree = "<group>"; };
+		7CDE3F2019198F2200366463 /* RayTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RayTrace.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CAB0FB2192D88F40036EADB /* libassimp.3.0.255.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +97,7 @@
 		7CDC4F8F18F711B10087644D = {
 			isa = PBXGroup;
 			children = (
+				7CAB0FB1192D88F40036EADB /* libassimp.3.0.255.dylib */,
 				7CDC4F9A18F711B10087644D /* cse168project1 */,
 				7CDC4F9918F711B10087644D /* Products */,
 			);
@@ -139,6 +147,8 @@
 				7CDC4FD218F7141B0087644D /* DirectLight.h */,
 				7C7FE1291904455A00801884 /* AABBNode.h */,
 				7CDE3F1B191957E900366463 /* AshikhminMaterial.h */,
+				7CDE3F2019198F2200366463 /* RayTrace.h */,
+				7C19D8A1191D54E10096D3FC /* DielectricMaterial.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -146,6 +156,7 @@
 		7CDC4FD418F714570087644D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7CDE3F1F19198F2200366463 /* RayTrace.cpp */,
 				7C7FE1281904455A00801884 /* AABBNode.cpp */,
 				7CDC4FA418F712510087644D /* Vector3.cpp */,
 				7CDC4FA518F712510087644D /* MeshObject.cpp */,
@@ -223,6 +234,7 @@
 				7CDC4FDF18F72C430087644D /* Triangle.cpp in Sources */,
 				7CDC4FAB18F712510087644D /* MeshObject.cpp in Sources */,
 				7CDC4FAC18F712510087644D /* Matrix34.cpp in Sources */,
+				7CDE3F2119198F2200366463 /* RayTrace.cpp in Sources */,
 				7CDC4FAD18F712510087644D /* Main.cpp in Sources */,
 				7CDC4FAE18F712510087644D /* Color.cpp in Sources */,
 				7CDC4FAF18F712510087644D /* Bitmap.cpp in Sources */,
@@ -305,24 +317,48 @@
 		7CDC4FA218F711B10087644D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/assimp/3.0.1270/lib,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-O3",
 					"-std=c++11",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		7CDC4FA318F711B10087644D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/assimp/3.0.1270/lib,
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-O3",
 					"-std=c++11",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

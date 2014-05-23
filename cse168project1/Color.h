@@ -9,7 +9,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
+class RayTrace;
+
 class Color {
+    friend RayTrace;
 public:
 	Color()									{Red=Green=Blue=1.0;}
 	Color(float r,float g,float b)			{Red=r; Green=g; Blue=b;}
@@ -21,6 +24,7 @@ public:
 	void Scale(float s)						{Red*=s; Green*=s; Blue*=s;}
 	void Scale(const Color c,float s)		{Red=s*c.Red; Green=s*c.Green; Blue=s*c.Blue;}
 	void Multiply(const Color c)			{Red*=c.Red; Green*=c.Green; Blue*=c.Blue;}
+//    void Normalize()                        {Scale(sqrtf(Red*Red+Green*Green+Blue*Blue));}
 
 	int ToInt() {
 		int r=(Red<0) ? 0 : ((Red>=1.0) ? 255 : int(Red*256.0f));

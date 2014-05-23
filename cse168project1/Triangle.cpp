@@ -15,9 +15,9 @@ void Triangle::Init(Vertex *v0, Vertex *v1, Vertex *v2, Material *m) {
 }
 
 bool Triangle::Intersect(const Ray &ray, Intersection &hit) {
-
     Vector3 d = ray.Direction;
     Vector3 p = ray.Origin;
+
     Vector3 aa = Vtx[0]->Position;
     Vector3 ab = Vtx[1]->Position - Vtx[0]->Position;
     Vector3 ac = Vtx[2]->Position - Vtx[0]->Position;
@@ -27,22 +27,36 @@ bool Triangle::Intersect(const Ray &ray, Intersection &hit) {
     cross.Cross(ab, ac);
     float det = (-d).Dot(cross);
     
-    if (det <= 0.f)
+    if (det <= 0.0f)
         return false;
     
     float t = (p - aa).Dot(cross) / det;
+
+    if (t <= 0.0f || t > hit.HitDistance)
+        return false;
+    
     cross.Cross(p - aa, ac);
     float a = (-d).Dot(cross) / det;
     
     cross.Cross(ab, p - aa);
     float b = (-d).Dot(cross) / det;
-    
-    if (a >= 0.f && b >= 0.f && (a + b) <= 1.f && t > 0.f && t < hit.HitDistance) {
+
+    if (a >= 0.0f && b >= 0.0f && (a + b) <= 1.0f) {
         hit.HitDistance = t;
         hit.Position = p + t * d;
+//        hit.Position = aa + a * ab + b * ac;
         hit.Mtl = Mtl;
         hit.Normal.Cross(ab, ac);
         hit.Normal.Normalize();
+        
+        hit.TangentU.Cross(Vector3::YAXIS, hit.Normal);
+        if (hit.TangentU.Magnitude2() < 0.0001f)
+            hit.TangentU = Vector3::XAXIS;
+        else
+            hit.TangentU.Normalize();
+
+        hit.TangentV.Cross(hit.Normal, hit.TangentU);
+        
         hit.Obj = this;
         return true;
     }

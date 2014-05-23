@@ -6,15 +6,23 @@
 #define CSE168_RAY_H
 
 #include "Vector3.h"
+#include "Material.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
 class Ray {
 public:
+    Ray(): Mtl(nullptr) {}
+    
+    enum RayType { PRIMARY = 0, SHADOW, SECONDARY };
+    
+public:
 	Vector3 Origin;
 	Vector3 Direction;
-
-    bool isShadow;
+    
+    RayType type;
+    
+    Material *Mtl;
 };
 
 ////////////////////////////////////////////////////////////////////////////////

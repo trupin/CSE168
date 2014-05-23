@@ -15,19 +15,26 @@ class Object;
 
 class Intersection {
 public:
-	Intersection(): Obj(nullptr)			{HitDistance=1e10; Mtl=0;}
+	Intersection(): Obj(nullptr), Shade(Color::BLACK)			{HitDistance=1e10; Mtl=0;}
+
+    bool operator > (const Intersection &o) const { return HitDistance > o.HitDistance; }
+    bool operator < (const Intersection &o) const { return HitDistance < o.HitDistance; }
 
 public:
 	// Ray intersection data
 	float HitDistance;
 	Vector3 Position;
 	Vector3 Normal;
+    
+    Vector3 TangentU, TangentV;
+    
 	Material *Mtl;
 
 	// Shaded color
 	Color Shade;
     
     Object *Obj;
+    
 };
 
 ////////////////////////////////////////////////////////////////////////////////
